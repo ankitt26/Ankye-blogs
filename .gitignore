@@ -32,3 +32,6 @@
 
 # Ignore env file 
 .env
+
+# .gitignore
+node_modules/
