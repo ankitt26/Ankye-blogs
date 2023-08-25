@@ -28,8 +28,6 @@ RSpec.describe Post, type: :model do
     end
   end
 
-
-
   describe 'test comments_counter validations' do
     it 'requires comments_counter to be an integer' do
       subject.comments_counter = 'comment'
