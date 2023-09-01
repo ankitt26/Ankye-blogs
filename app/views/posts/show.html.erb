@@ -1,1 +1,8 @@
-<h2>Here is a detailed post for a given user</h2>
+<div class = "container bg-success">
+    <a href="/users/<%= @post.author.id %>/posts/<%= @post.id %>" class="text-decoration-none">
+      <div class="mb-3">
+        <%= render 'partials/post', post:@post %>
+        <%= render 'partials/comment', comments: @post.comments unless @post.comments.empty? %>
+      </div>
+    </a>
+</div>
