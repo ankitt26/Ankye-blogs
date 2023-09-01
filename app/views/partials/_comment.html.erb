@@ -1,0 +1,9 @@
+<div class="comment-section">
+  <div class="comment-list">
+    <% comments.each do |comment| %>
+      <div class="comment">
+        <p><%= comment.author.name %>: <%= comment.text %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
