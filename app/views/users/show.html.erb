@@ -1,1 +1,22 @@
-<h2>Here is details for a given user</h2>
+<div class="container bg-dark-subtle">
+  <a href="/users/<%= @user.id %>" class="user-link text-decoration-none">
+    <%= render 'partials/user', user: @user %>
+  </a>
+  
+  <div class="row p-3 border">
+    <h3>Bio</h3>
+    <p><%= @user.bio %></p>
+  </div>
+  
+  <% @user.three_most_recent_posts.each do |post| %>
+    <a href="/users/<%= @user.id %>/posts/<%= post.id %>" class="post-link text-decoration-none">
+      <div class="mb-3">
+        <%= render 'partials/post', post: post %>
+      </div>
+    </a>
+  <% end %>
+  
+  <div class="w-90 mt-5 d-flex justify-content-center align-items-center">
+    <a href="/users/<%= @user.id %>/posts" class="btn bg-white m-1 text-decoration-none">See All Posts</a>
+  </div>
+</div>

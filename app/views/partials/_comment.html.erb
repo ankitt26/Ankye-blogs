@@ -1,0 +1,9 @@
+<div class="card bg-dark-subtle">
+  <div class="card-body">
+    <% comments.each do |comment| %>
+      <div class="comment">
+        <p class="text-decoration-none"><%= comment.author.name %>: <%= comment.text %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
