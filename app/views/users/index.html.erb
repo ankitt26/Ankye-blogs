@@ -1,1 +1,10 @@
-<h2>Here is list of users</h2>
+<% if @users.empty? %>
+<h1> Plase add user at first</h1>
+<%end%>
+<div class = "">
+<% @users.each do |user|%>
+  <a href="/users/<%= user.id %>" class="">
+        <%= render 'partials/user', user: user %>
+  </a>
+<%end%>
+</div>
