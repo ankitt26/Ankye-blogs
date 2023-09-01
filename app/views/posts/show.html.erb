@@ -1,7 +1,7 @@
-<div class = "container bg-success">
+<div class="container bg-dark-subtle">
     <a href="/users/<%= @post.author.id %>/posts/<%= @post.id %>" class="text-decoration-none">
       <div class="mb-3">
-        <%= render 'partials/post', post:@post %>
+        <%= render 'partials/post', post: @post %>
         <%= render 'partials/comment', comments: @post.comments unless @post.comments.empty? %>
       </div>
     </a>

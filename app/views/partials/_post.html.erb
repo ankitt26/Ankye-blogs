@@ -1,10 +1,10 @@
-<div class="post-card">
-  <div class="post-body">
-    <h4 class="post-title"><%= post.title %></h4>
-    <p class="post-text"><%= post.text %></p>
-    <div class="post-metadata">
-      <h6 class="comment-count">Comments: <%= post.comments_counter %>,</h6>
-      <h6 class="like-count">Likes: <%= post.likes_counter %></h6>
+<div class="card bg-dark-subtle">
+  <div class="card-body">
+    <h4 class="card-title"><%= post.title %></h4>
+    <p class="text-truncate text-justify"><%= post.text %></p>
+    <div class="d-flex justify-content-end gap-1 align-items-end">
+      <h6 class="m-0 text-decoration-none">Comments: <%= post.comments_counter %>,</h6>
+      <h6 class="m-0 text-decoration-none">Likes: <%= post.likes_counter %></h6>
     </div>
   </div>
 </div>
