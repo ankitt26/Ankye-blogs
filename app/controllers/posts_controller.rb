@@ -21,7 +21,7 @@ class PostsController < ApplicationController
     @current_user = User.first
     @like = Like.new
   end
-  
+
   def new
     @post = Post.new
   end
