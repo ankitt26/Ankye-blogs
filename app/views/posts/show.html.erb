@@ -1,15 +1,15 @@
 <div class="container bg-dark-subtle">
-<a href="<%= user_posts_path() %>">
+  <a href="<%= user_posts_path(@post.author) %>">
     <button id="back-btn">⬅</button>
-</a>
-    <a href="/users/<%= @post.author.id %>/posts/<%= @post.id %>" class="text-decoration-none">
-      <div class="mb-3">
-        <%= render 'partials/post', post: @post %>
-         <div class= "row p-3 border">
-        <%= link_to 'Add a new commment', "/users/#{@current_user.id}/posts/#{@post.id}/comments/new", class: "btn bg-white" %>
+  </a>
+  <a href="/users/<%= @post.author.id %>/posts/<%= @post.id %>" class="text-decoration-none">
+    <div class="mb-3">
+      <%= render 'partials/post', post: @post %>
+      <div class="row p-3 border">
+        <%= link_to 'Add a new comment', new_user_post_comment_path(@post.author, @post), class: "btn bg-white" %>
         <%= render partial: "partials/like", locals: { like: Like.new, post_id: @post.id, user_id: @post.author.id } %>
-        </div>
-        <%= render 'partials/comment', comments: @post.comments unless @post.comments.empty? %>
       </div>
-    </a>
+      <%= render 'partials/comment', comments: @post.comments unless @post.comments.empty? %>
+    </div>
+  </a>
 </div>
