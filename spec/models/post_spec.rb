@@ -1,14 +1,27 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  first_user = User.new(name: 'Ankit', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.')
-  subject { Post.new(author: first_user, title: 'Hello', text: 'This is my first post') }
+  let(:user) do
+    User.create(
+      name: 'Ankit',
+      photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
+      bio: 'Teacher from Mexico.'
+    )
+  end
 
-  before { subject.save }
+  subject do
+    described_class.new(
+      author: user,
+      title: 'Hello',
+      text: 'This is my first post',
+      comments_counter: 0,
+      likes_counter: 0
+    )
+  end
 
   describe 'test present validations' do
     it 'requires title to be present' do
-      subject.author = nil
+      subject.title = nil
       expect(subject).to_not be_valid
     end
 
@@ -22,7 +35,7 @@ RSpec.describe Post, type: :model do
       expect(subject).to_not be_valid
     end
 
-    it 'Maximum title length should be 250 ' do
+    it 'Maximum title length should be 250' do
       subject.title = 'a' * 251
       expect(subject).to_not be_valid
     end
