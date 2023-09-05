@@ -10,8 +10,10 @@ class PostsController < ApplicationController
       .offset((page.to_i - 1) * per_page)
       .limit(per_page)
 
+    # Set @author
+    @author = User.find(params[:user_id])
+
     @total_pages = (current_user.posts.count.to_f / per_page).ceil
-    @author = @posts.first.author unless @posts.first.nil?
   end
 
   def show
@@ -19,7 +21,7 @@ class PostsController < ApplicationController
     @current_user = User.first
     @like = Like.new
   end
-
+  
   def new
     @post = Post.new
   end
