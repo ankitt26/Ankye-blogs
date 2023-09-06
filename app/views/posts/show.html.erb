@@ -2,6 +2,7 @@
   <a href="<%= user_posts_path(@post.author) %>">
     <button id="back-btn">⬅</button>
   </a>
+  <h3>Post by <%= @current_user.name %></h3>
   <a href="/users/<%= @post.author.id %>/posts/<%= @post.id %>" class="text-decoration-none">
     <div class="mb-3">
       <%= render 'partials/post', post: @post %>
