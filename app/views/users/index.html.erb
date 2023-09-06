@@ -1,11 +1,14 @@
-<% if @users.empty? %>
-  <h1>Please add users first</h1>
-<% end %>
-
-<div class="container">
-  <% @users.each do |user| %>
-    <a href="/users/<%= user.id %>" class="text-decoration-none">
-      <%= render 'partials/user', user: user %>
-    </a>
+<div class = "container">
+  <h1>Users</h1>
+  <% unless @users.empty? %>
+    <% @users.each do |user|%>
+      <a href="/users/<%= user.id %>" class="text-decoration-none">
+        <%= render 'shared/user', user: user %>
+      </a>
+    <%end%>
+  <% else%>
+    <p>Please sign in or sign up to view user details.</p>
+    <%= link_to 'Sign In', new_user_session_path %>
+    <%= link_to 'Sign Up', new_user_registration_path %>
   <% end %>
 </div>

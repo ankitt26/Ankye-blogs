@@ -1,25 +1,24 @@
-<div class="container bg-dark-subtle">
-   <a href="/users" class="text-Blue text-decoration-none">Back</a>
-  <%= render 'partials/user', user: @user %>
-  
-  <div class="row p-3 border">
-    <h3>Bio</h3>
-    <p><%= @user.bio %></p>
-  </div>
+<div class = "container bg-success">
+  <% if user_signed_in? %> 
+    <a href="/users" class="text-decoration-none bg-white text-black"> back </a>
+    <%= render 'shared/user', user: @user %>
+    <div class= "row p-3 border">
+      <h3>Bio</h3>
+      <p><%= @user.bio %> </p>
+    </div>
 
-   <div class= "row p-3 border">
-  <%= link_to 'Add a new post', "/users/#{@user.id}/posts/new", class: "btn bg-white" %>
-  </div>
-  
-  <% @user.three_most_recent_posts.each do |post| %>
-    <a href="/users/<%= @user.id %>/posts/<%= post.id %>" class="post-link text-decoration-none">
-      <div class="mb-3">
-        <%= render 'partials/post', post: post %>
-      </div>
-    </a>
-  <% end %>
-  
-  <div class="w-90 mt-5 d-flex justify-content-center align-items-center">
-    <a href="/users/<%= @user.id %>/posts" class="btn bg-white m-1 text-decoration-none">See All Posts</a>
-  </div>
+    <div class= "row p-3 border">
+      <%= link_to 'Add a new post', "/users/#{@user.id}/posts/new", class: "btn bg-white" %>
+    </div>
+    <% @user.recent_posts.each do |post| %>
+      <a href="/users/<%= @user.id %>/posts/<%= post.id %>" class="text-decoration-none">
+        <div class="mb-3">
+          <%= render 'shared/post', post: post %>
+        </div>
+      </a>
+    <% end %>
+    <div class="w-90 mt-5 d-flex justify-content-center align-items-center ">
+      <a href="/users/<%= @user.id %>/posts" class="btn bg-white m-1">See all posts</a>
+    </div>
+  <%end%>
 </div>
