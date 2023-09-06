@@ -17,8 +17,12 @@ RSpec.describe 'User Show Page', type: :feature do
     it "shows the number of posts of user, user bio, and the user's first 3 posts " do
       expect(page).to have_content('Number of posts: 4')
       expect(page).to have_content('I am a new Gen coder')
+      expect(page).to have_content('Post 2')
+      expect(page).to have_content('Post 3')
+      expect(page).to have_content('Post 4')
       expect(page).not_to have_content('This is the first post.')
     end
+
     it "Displays a button that lets me view all of a user's posts" do
       expect(page).to have_link('See All Posts', href: "/users/#{@user.id}/posts")
     end
