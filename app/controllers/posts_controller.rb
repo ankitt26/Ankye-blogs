@@ -1,20 +1,19 @@
 class PostsController < ApplicationController
-def index
-  page = params[:page] || 1
-  per_page = 8
-  user_id = params[:user_id]
+  def index
+    page = params[:page] || 1
+    per_page = 8
+    user_id = params[:user_id]
 
-  @posts = Post.includes(:author)
-    .includes(:comments)
-    .where(author: user_id)
-    .order(created_at: :asc)
-    .offset((page.to_i - 1) * per_page)
-    .limit(per_page)
+    @posts = Post.includes(:author)
+      .includes(:comments)
+      .where(author: user_id)
+      .order(created_at: :asc)
+      .offset((page.to_i - 1) * per_page)
+      .limit(per_page)
 
-  @total_pages = (Post.where(author: user_id).count.to_f / per_page).ceil
-  @author = User.find(user_id)
-end
-
+    @total_pages = (Post.where(author: user_id).count.to_f / per_page).ceil
+    @author = User.find(user_id)
+  end
 
   def show
     @post = Post.find(params[:id])
