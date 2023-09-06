@@ -52,5 +52,9 @@ RSpec.describe 'Post Index', type: :feature do
       click_link 'Post 1'
       expect(page).to have_current_path(user_post_path(@user, @post1))
     end
+
+    it 'displays pagination button' do
+      expect(page).to have_selector('.pagination')
+    end
   end
 end
