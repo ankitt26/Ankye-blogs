@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Post Show', type: :feature do
+RSpec.describe 'Post Show', type: :feature do
   before(:each) do
     @user = User.create(
       name: 'Ankit',
