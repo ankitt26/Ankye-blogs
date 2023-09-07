@@ -3,7 +3,7 @@
   <% unless @users.empty? %>
     <% @users.each do |user|%>
       <a href="/users/<%= user.id %>" class="text-decoration-none">
-        <%= render 'shared/user', user: user %>
+        <%= render 'partials/user', user: user %>
       </a>
     <%end%>
   <% else%>

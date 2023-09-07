@@ -1,7 +1,7 @@
-<div class = "container bg-success">
+<div class = "container bg-dark-subtle">
   <% if user_signed_in? %> 
-    <a href="/users" class="text-decoration-none bg-white text-black"> back </a>
-    <%= render 'shared/user', user: @user %>
+    <a href="/users" class="text-decoration-none text-black"> 🔙 </a>
+    <%= render 'partials/user', user: @user %>
     <div class= "row p-3 border">
       <h3>Bio</h3>
       <p><%= @user.bio %> </p>
@@ -10,10 +10,10 @@
     <div class= "row p-3 border">
       <%= link_to 'Add a new post', "/users/#{@user.id}/posts/new", class: "btn bg-white" %>
     </div>
-    <% @user.recent_posts.each do |post| %>
+    <% @user.three_most_recent_posts.each do |post| %>
       <a href="/users/<%= @user.id %>/posts/<%= post.id %>" class="text-decoration-none">
         <div class="mb-3">
-          <%= render 'shared/post', post: post %>
+          <%= render 'partials/post', post: post %>
         </div>
       </a>
     <% end %>
