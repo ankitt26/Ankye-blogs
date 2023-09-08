@@ -26,7 +26,9 @@
         <li class="nav-item nav-link">
           <%= link_to 'Create Post', new_user_post_path(current_user) %>
         </li> 
-         
+         <li class="nav-item nav-link">
+          <%= link_to 'My Posts', user_posts_path(current_user) %>
+        </li>
 
       <% else %>
         <li class="nav-item nav-link">
